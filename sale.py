@@ -2,19 +2,23 @@ import streamlit as st
 import requests
 import datetime
 
-import streamlit as st
-import requests
-import datetime
-
 # 1. ページ設定
 st.set_page_config(page_title="営業進捗入力", layout="centered")
 
-# 2. 余計なメニューやフッターを隠す設定
+# 2. 上の余白を削り、メニューを隠すCSS
+# block-container の padding-top を小さく（1remなど）設定します
 hide_st_style = """
             <style>
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
             header {visibility: hidden;}
+            /* ここから下が余白を削るコード */
+            .block-container {
+                padding-top: 1rem;
+                padding-bottom: 0rem;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
             </style>
             """
 st.markdown(hide_st_style, unsafe_allow_html=True)
@@ -107,5 +111,6 @@ if st.button("スプレッドシートへ保存", type="primary", use_container_
             st.session_state.showings = 0
         else:
             st.error("保存に失敗しました")
+
 
 
