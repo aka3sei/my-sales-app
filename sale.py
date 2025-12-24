@@ -5,30 +5,29 @@ import datetime
 # 1. ページ設定
 st.set_page_config(page_title="営業進捗入力", layout="centered")
 
-# 2. 上部・全体の余白を極限まで削るCSS
+# 2. 上を詰め、下を広げるCSS
 hide_st_style = """
             <style>
             #MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
             header {visibility: hidden;}
             
-            /* メインコンテンツエリアの余白をゼロに */
+            /* コンテンツエリアの調整 */
             .block-container {
                 padding-top: 0rem;
-                padding-bottom: 0rem;
+                padding-bottom: 6rem; /* 下に大きな余白を追加 */
                 padding-left: 1rem;
                 padding-right: 1rem;
             }
             
-            /* タイトル（h1）の上の余白を消す */
+            /* タイトルをさらに上に */
             h1 {
-                margin-top: -30px;
+                margin-top: -35px;
                 padding-top: 0px;
             }
             
-            /* 画面最上部のデッドスペースを消す */
-            .stAppHeader {
-                height: 0px;
+            /* 最上部のヘッダー領域を完全に消す */
+            header[data-testid="stHeader"] {
                 display: none;
             }
             </style>
@@ -123,6 +122,7 @@ if st.button("スプレッドシートへ保存", type="primary", use_container_
             st.session_state.showings = 0
         else:
             st.error("保存に失敗しました")
+
 
 
 
