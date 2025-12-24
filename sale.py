@@ -22,7 +22,7 @@ with st.container():
     # 読み込みデータがあればそれを使い、なければ今日の日付
     default_date = datetime.date.today()
     if "date" in st.session_state.data and st.session_state.data["date"]:
-        default_date = datetime.datetime.strptime(st.session_state.data["date"], "%yyyy-MM-dd").date()
+        default_date = datetime.datetime.strptime(st.session_state.data["date"], "%Y-%m-%d").date()
     
     date = st.date_input("登録日", default_date)
     
@@ -92,3 +92,4 @@ if st.button("スプレッドシートへ保存", type="primary", use_container_
             st.session_state.showings = 0
         else:
             st.error("保存に失敗しました")
+
