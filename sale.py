@@ -2,9 +2,24 @@ import streamlit as st
 import requests
 import datetime
 
-# ページ設定
+import streamlit as st
+import requests
+import datetime
+
+# 1. ページ設定
 st.set_page_config(page_title="営業進捗入力", layout="centered")
 
+# 2. 余計なメニューやフッターを隠す設定
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
+
+# 3. タイトル表示
 st.title("営業進捗入力")
 
 # --- 設定（GASのURL） ---
@@ -92,4 +107,5 @@ if st.button("スプレッドシートへ保存", type="primary", use_container_
             st.session_state.showings = 0
         else:
             st.error("保存に失敗しました")
+
 
